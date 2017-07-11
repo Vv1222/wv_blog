@@ -3,6 +3,13 @@ layout: page
 description: "vv的小天地"
 ---
 {% for post in paginator.posts %}
+<h2>{{ page.title }}</h2>
+　　<p>最新文章</p>
+　　<ul>
+　　　　{% for post in site.posts %}
+　　　　　　<li>{{ post.date | date_to_string }} <a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></li>
+　　　　{% endfor %}
+　　</ul>
 <!DOCTYPE html>
 <html lang="en">
 
