@@ -17,6 +17,8 @@ title: vv的小天地
 email: wvme@foxmail.com
 description: > # this means to ignore newlines until "baseurl:"
   终于开始了，我的小博客～
+baidu-site-verification:
+  eCn487ZZ7B
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://vv1222.github.io" # the base hostname & protocol for your site, e.g. http://example.com
 #twitter_username: jekyllrb
