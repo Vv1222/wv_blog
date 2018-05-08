@@ -1,18 +1,15 @@
 ---
-layout: default
+layout: default_post
 ---
-
-<header>
+<header class="masthead">
+  <h1 class="masthead-title--small">
+    <a href="{{ site.baseurl }}/">{{ site.name }}</a>
+  </h1>
+</header>      
+<div class="content post">
   <h1 class="post-title">{{ page.title }}</h1>
-</header>
-<div class="content">
-  {% include post-meta.html post=page %}
-
-  <div class="post-body">
-    {{ content }}
-    {% include post-tags.html post=page %}
+  <div class="post-date">
+    <time>{{ page.date | date_to_string }}</time>
   </div>
-
-  {% include comments.html %}
-  {% include related_posts.html %}
+  {{ content | replace: "µµ", "&emsp;" }}
 </div>

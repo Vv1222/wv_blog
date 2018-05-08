@@ -1,13 +1,17 @@
 ---
-layout: page
-title: About
-sidebar_link: true
+title: About...
+permalink: /about/
+layout: default_post
 ---
 
-<p class="message">
-  Hey there! This page is included as an example. Feel free to customize it
-  for your own use upon downloading. Carry on!
-</p>
+## ..myself #
 
-To make pages show up in the sidebar, add `sidebar_link: true` to the front
-matter.
+Hello there. How I’ve waited for you to come, Ive been here all alone. 
+Now that you've arrived. Please stay a while. And I promise I won't keep 
+you long. <style>a{color: #FFF;}a:hover{color: #f0f0f0;}.footer a{color: #800000;}</style>
+[_I'll keep you forever..._](https://youtu.be/vh1TsSaGlXQ?t=37s)
+
+## ...this blog #
+
+I write this blog because I like to chant, rant and sometimes say things that I probably shan't.
+

@@ -1,37 +1,55 @@
-# Dependencies
-markdown:         kramdown
-highlighter:      rouge
+---
+# # # # # # # # # #
+#  K i k o f r i  #
+# # # # # # # # # #
 
-# Setup
-title:            Hydeout
-tagline:          'A Jekyll theme'
-description:      'The <a href="http://hyde.getpoole.com" target="_blank">Hyde</a> theme for <a href="http://jekyllrb.com" target="_blank">Jekyll</a>, refreshed.'
-url:              https://fongandrew.github.io/hydeout
-baseurl:          # the optional subpath of your site, e.g. "/blog"
-                  # NB: This applies to all pages in your Jekyll site.
-                  # If you want to move just the blog index pages but keep
-                  # other pages at root, see the paginate_path and
-                  # sidebar_blog_link below.
+# Basic
+name: "K i k o f r i"
+description: "dirty and malnourished jekyll theme"
 
-author:
-  name:           'Andrew Fong'
-  url:            https://twitter.com/fongandrewc
+# URL
+url: " "
+#baseurl: ""
+permalink: /:year/:month/:day/:title.html
 
-paginate:         5
-# paginate_path:    '/page:num'
-                    # Or '/blog/page:num' if you want to move your index pages
+# Markdown
+markdown: kramdown
 
-plugins:
-  - jekyll-feed
-  - jekyll-gist
-  - jekyll-paginate
+# Navigation
+nav:
+ - name: "about"
+   href: "/about"
 
-# Custom vars
-version:            3.6.0
-sidebar_home_link:  true
-# sidebar_blog_link:  '/blog'   # By default, your home page is your blog
-                                # page. If you change your paginate_path,
-                                # set this to the root of the paginate_path
-                                # to enable a separate blog link.
-github:
-  repo:             https://github.com/fongandrew/hydeout
+ - name: "reference"
+   href: "/ref"
+
+ - name: "contact"
+   href: "mailto:ivantheterrible@1530to1584.gov?You%20are%20ooold..."
+
+# Sass
+sass:
+ style: :compressed
+
+# Excerpt
+excerpt_separator: <!-ex->
+
+#Gems
+gems: [jekyll-paginate]
+paginate: 10
+paginate_path: "/page:num/"
+
+# Scopes
+defaults:
+ -
+  scope:
+   path: ""
+   type: "pages"
+  values:
+   layout: "page"
+ -
+  scope:
+   path: ""
+   type: "posts"
+  values:
+   layout: "post"
+---
