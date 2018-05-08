@@ -1,11 +1,8 @@
 ---
-# # # # # # # # # #
-#  K i k o f r i  #
-# # # # # # # # # #
 
 # Basic
-name: "V v Blog"
-description: "每一天都是新的开始，😊"
+name: "V's"
+description: "每一天都是新的开始😊"
 
 # URL
 url: " "
@@ -17,10 +14,10 @@ markdown: kramdown
 
 # Navigation
 nav:
- - name: "about"
+ - name: "About"
    href: "/about"
 
- - name: "Git"
+ - name: "GitHub"
    href: "https://github.com/Vv1222/vv1222.github.com"
 
 

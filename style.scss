@@ -48,16 +48,16 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h1 {
-  font-size: 2rem;
+  font-size: 1.5rem;
 }
 
 h2 {
-  font-size: 1.5rem;
+  font-size: 1.4rem;
 }
 
 /*In-post main heading*/
 h3 {
-  font-size: 1.5rem;
+  font-size: 1.4rem;
   text-decoration: underline;
   margin: 10px 0 5px 0;
 } 
@@ -337,7 +337,7 @@ tbody tr:nth-child(odd) th {
     font-weight: 400;
     
     a {
-      color: #660000;
+      color: black;
       
       &:hover,
       &:focus {
@@ -346,19 +346,18 @@ tbody tr:nth-child(odd) th {
     }
     
     span {
-      color: #ddd;
+      color: red;
     }
     
   }
   
   &-title--small {
-    margin-bottom: .75rem;
-    font-size: .75rem;
-    font-weight: 600;
-    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+    font-size: 1rem;
+    font-weight: 200;
     
     a {
-      color: #660000;
+      color: black;
       
       &:hover,
       &:focus {
@@ -368,12 +367,12 @@ tbody tr:nth-child(odd) th {
   }
   
   .masthead-nav {
-    margin-bottom: 1rem;
+    margin-bottom: 3rem;
     
     a {
       color: #aaa;
       font-weight: 300;
-      text-transform: lowercase;
+
       -webkit-transition: all .2s ease;
          -moz-transition: all .2s ease;
               transition: all .2s ease;
@@ -416,7 +415,7 @@ tbody tr:nth-child(odd) th {
     margin-bottom: .25rem;
     
     a {
-      color: #660000;
+      color: #000;
       
       &:hover,
       &:focus {
