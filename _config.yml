@@ -4,8 +4,8 @@
 # # # # # # # # # #
 
 # Basic
-name: "K i k o f r i"
-description: "dirty and malnourished jekyll theme"
+name: "V v Blog"
+description: "每一天都是新的开始，😊"
 
 # URL
 url: " "
@@ -20,11 +20,9 @@ nav:
  - name: "about"
    href: "/about"
 
- - name: "reference"
-   href: "/ref"
+ - name: "Git"
+   href: "/github.com/Vv1222/vv1222.github.com"
 
- - name: "contact"
-   href: "mailto:ivantheterrible@1530to1584.gov?You%20are%20ooold..."
 
 # Sass
 sass:
