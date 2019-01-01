@@ -48,6 +48,18 @@ defaults:
   values:
    layout: "post"
 ---
-#comment
-comment:
-  disqus: Vv's
+#gitment
+
+gitment:
+  enable: true
+  mint: true 		# RECOMMEND, A mint on Gitment, to support count, language and proxy_gateway
+  count: true 		# Show comments count in post meta area
+  lazy: false 		# Comments lazy loading with a button
+  cleanly: false 	# Hide 'Powered by ...' on footer, and more
+  language: 		# Force language, or auto switch by theme
+  github_user: vv1222 	# 此处 - Your Github ID
+  github_repo: vv1222.github.com # 此处注意 - The repo you use to store Gitment comments
+  client_id: 3c472ea296d4e63b04bb # 此处 - Github client id for the Gitment
+  client_secret: 0f7a873b3477f5da1e86e41b1990969f12a5f0af # 此处 - Github access secret token for the Gitment
+  proxy_gateway: # Address of api proxy, See: https://github.com/aimingoo/intersect
+  redirect_protocol: # Protocol of redirect_uri with force_redirect_protocol when mint enabled
