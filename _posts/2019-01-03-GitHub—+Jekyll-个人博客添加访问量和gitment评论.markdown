@@ -90,21 +90,22 @@ repo：评论通过issues存放，可以新建一个仓库，或者直接用博�
 
 > ④ 错误解决
 
-- 登陆报错Object ProgressEvent
+- **登陆报错Object ProgressEvent**
 原作者的服务器没有再维护了，如果引用的是原作者的链接出现这个问题替换一下就可以了。
 替换代码如下：
 ```
 <link rel="stylesheet" href="https://jjeejj.github.io/css/gitment.css">
 <script src="https://jjeejj.github.io/js/gitment.js"></script>
 ```
-- Error：validation failed
+- **Error：validation failed**
 issue的标签label有长度限制，labels的最大长度限制是50个字符。
 在_layouts/下的post.html刚刚添加的代码修改： 
+
 ```
 id: “<%=url%>”改成id: '{{ page.title }}'
 如果本来没有则加上id: '{{ page.title }}'即可
 ```
-- 明文密码风险
+- **明文密码风险**
 直接把Client Secret写在页面不知道会有啥风险不，替代方案新建个小号换掉这里的id和secret，反正博客也没人看就先不折腾了。。。
 
  [1]: http://busuanzi.ibruce.info/
