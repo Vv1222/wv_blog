@@ -24,24 +24,30 @@ categories: blog
 ---
 
 ## 2、 添加gitment评论
+
 gitment是基于github issues的评论系统，具体步骤如下：
 
 > ① 申请 Github OAuth Application
 
 右上角GitHub头像-Settings-Developer settings-OAuth Apps-Register a new OAuth application
-
+<br/>
 填写注册信息
-
+<br/>
 Application name 可以随意写
+
 
 Homepage URL 写自己博客的地址就行
 
+
 Application description 随意写
+
 
 **Authorization callback URL** 这里要写自己GitHub Pages的URL，或者域名
 
 
+
 注册完成后会得到一个Client ID 和一个Client Secret
+
 
 > ② 调用gitment
 
