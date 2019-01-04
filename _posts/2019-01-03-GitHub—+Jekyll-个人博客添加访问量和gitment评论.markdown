@@ -30,9 +30,11 @@ gitment是基于github issues的评论系统，具体步骤如下：
 > ① 申请 Github OAuth Application
 
 右上角GitHub头像-Settings-Developer settings-OAuth Apps-Register a new OAuth application
-<br/>
+
+
 填写注册信息
-<br/>
+
+
 Application name 可以随意写
 
 
@@ -97,26 +99,45 @@ repo：评论通过issues存放，可以新建一个仓库，或者直接用博�
 > ③ 初始化评论
 
 调用成功后，需要到每一篇文章下初始化评论。
+
+
 在初始化前会提示Error: Comments Not Initialized,登陆自己的GitHub后点击Initialize Comments，就可以了。
+
 
 > ④ 错误解决
 
 - **登陆报错Object ProgressEvent**
+
 原作者的服务器没有再维护了，如果引用的是原作者的链接出现这个问题替换一下就可以了。
+
+
 代码如下：
+
+
 ```
 <link rel="stylesheet" href="https://jjeejj.github.io/css/gitment.css">
 <script src="https://jjeejj.github.io/js/gitment.js"></script>
 ```
+
 - **Error：validation failed**
+
+
 issue的标签label有长度限制，labels的最大长度限制是50个字符。
+
+
 在_layouts/下的post.html刚刚添加的代码修改： 
+
 
 ```
 id: “<%=url%>”改成id: '{{ page.title }}'
 如果本来没有则加上id: '{{ page.title }}'即可
 ```
+
 - **明文密码风险**
+
+
 直接把Client Secret写在页面不知道会有啥风险不，替代方案新建个小号换掉这里的id和secret，反正博客也没人看就先不折腾了。。。
+
+markdown换行要两个回车或者用<br/> (⁎⁍̴̛ᴗ⁍̴̛⁎)
 
  [1]: http://busuanzi.ibruce.info/
