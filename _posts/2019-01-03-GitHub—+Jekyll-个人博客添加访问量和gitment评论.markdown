@@ -85,14 +85,13 @@ repo：评论通过issues存放，可以新建一个仓库，或者直接用博�
 > ③ 初始化评论
 
 调用成功后，需要到每一篇文章下初始化评论。
-在初始化前会提示Error: Comments Not Initialized
-登陆自己的GitHub后点击Initialize Comments，就可以了。
+在初始化前会提示Error: Comments Not Initialized,登陆自己的GitHub后点击Initialize Comments，就可以了。
 
 > ④ 错误解决
 
 - **登陆报错Object ProgressEvent**
 原作者的服务器没有再维护了，如果引用的是原作者的链接出现这个问题替换一下就可以了。
-替换代码如下：
+代码如下：
 ```
 <link rel="stylesheet" href="https://jjeejj.github.io/css/gitment.css">
 <script src="https://jjeejj.github.io/js/gitment.js"></script>
