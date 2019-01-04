@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "GitHub+Jekyll个人博客添加访问量和评论"
+title:  "GitHub+Jekyll个人博客添加访问量和gitment评论"
 date:   2019-01-03 22:50:22 +0800
 categories: blog
 ---
@@ -23,7 +23,7 @@ categories: blog
 
 ---
 
-##2、 添加评论
+## 2、 添加评论
 gitment是基于github issues的评论系统，具体步骤如下：
 
 > ① 申请 Github OAuth Application
