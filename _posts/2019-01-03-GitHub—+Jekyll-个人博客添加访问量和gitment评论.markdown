@@ -106,3 +106,5 @@ id: “<%=url%>”改成id: '{{ page.title }}'
 ```
 - 明文密码风险
 直接把Client Secret写在页面不知道会有啥风险不，替代方案新建个小号换掉这里的id和secret，反正博客也没人看就先不折腾了。。。
+
+ [1]: http://busuanzi.ibruce.info/
