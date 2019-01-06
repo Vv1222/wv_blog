@@ -1,0 +1,591 @@
+---
+layout: post
+title:  "C语言-学生成绩管理系统"
+date:   2019-01-06 23:08:30 +0800
+categories: C
+---
+
+
+C语言小菜鸟的期末课程设计，学生成绩管理系统。
+
+第一次写，很多地方都不是很完美，有时候只追求运行的结果，代码写的一团糟，感觉不是个好习惯……
+
+
+```
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+#include <time.h>
+struct STU {
+	char id[10];//学号 
+	char name[20];//姓名 
+	char sex[5];//性别 
+	char major[20];//专业 
+	float c;//c语言 
+	float math;//数学 
+	float elect;//电路 
+	float net;//网络 
+};//声明结构体 
+struct STU stu[200];//声明学生体，固定大小200 
+char user[6],username[6] = "admin";//登陆用户 
+int pass,Login=0,password = 1;//用户密码 
+//欢迎界面
+void welcome()
+{	
+    system("color f3");  //修改背景颜色 
+    time_t t;
+    struct tm * lt;
+    time (&t);//获取Unix时间戳。
+    lt = localtime (&t);//转为时间结构。
+    printf("\n\n\t\t ︹︹︹︹︹︹︹︹︹︹︹︹︹︹︹︹︹︹︹︹\n\n");  
+    printf("\n\n\n\t\t\t  欢迎登陆学生成绩管理系统  \t\t\n\n\n\n");
+    printf("\t\t ︺︺︺︺︺︺%d/%d/%d %d:%d:%d︺︺︺︺︺︺\n\n",lt->tm_year+1900, lt->tm_mon+1, lt->tm_mday, lt->tm_hour, lt->tm_min, lt->tm_sec);   
+}
+//登陆验证，3次机会
+void login()
+{   int i;
+	for(i=0;i<3;i++){
+		printf("输入用户名\n");
+		scanf("%s",user);
+		printf("输入密码\n");
+		scanf("%d",&pass);
+		if((strcmp(user,username)==0) && (pass==password))
+		{
+			Login=1;
+			printf("欢迎您，amdin。\n\n");
+			break;
+		}
+		else
+		{
+			Login=0;
+			printf("用户名、密码错误。\n");
+		}
+	}
+}
+//功能菜单 
+void menu() 
+{  
+    system("color f3");  
+    printf("   \t \t  ︹︹︹︹︹︹︹︹︹︹︹︹︹︹︹︹︹︹︹︹︹︹\n");  
+    printf("   \t \t〔                                            〕\n");  
+    printf("   \t \t〔              学生信息管理系统              〕\n");  
+    printf("   \t \t〔                                            〕\n");  
+    printf("   \t \t〔            0、退出系统                     〕\n");  
+    printf("   \t \t〔            1、增加学生信息                 〕\n");  
+    printf("   \t \t〔            2、删除学生信息                 〕\n");  
+    printf("   \t \t〔            3、修改学生信息                 〕\n");  
+    printf("   \t \t〔            4、查询学生的信息               〕\n");  
+    printf("   \t \t〔            5、按照学生成绩排序             〕\n");  
+    printf("   \t \t〔            6、浏览全部学生信息             〕\n");  
+    printf("   \t \t〔                                            〕\n");  
+    printf("   \t \t  ︺︺︺︺︺︺︺︺︺︺︺︺︺︺︺︺︺︺︺︺︺︺  \n");  
+    return ;  
+}  
+//添加学生信息 
+void add()
+{
+	FILE *fp;
+	int i=0,n=0,k=0;
+	char sign='y';//是否继续添加的记号 
+	struct STU s[100],p[100];
+	if((fp=fopen("c:\\student.txt","rb+"))==NULL)//rb+读写 
+	{
+		printf("open error\n");
+		exit(0);	
+	}
+	while(fscanf(fp,"%s %s %s %s %f %f %f %f\n",p[k].id,p[k].name,p[k].sex,p[k].major,&p[k].c,&p[k].math,&p[k].elect,&p[k].net)!=EOF)
+	{
+	    k++;
+	}//读取文件内容 
+	system("cls"); //清屏
+	printf("请输入相关信息\n");
+	while(sign!='n'&&sign!='N')
+	{	int j=0;
+	    printf("学号：\n");
+	    scanf("%s",&s[i].id); 
+	    while(strcmp(s[i].id,p[j].id)!=0&&j<k) j++; //判断学号是否存在，不存在的话j应该等于k 
+		if(j!=k)
+		{
+			printf("该学生已存在 \n");
+			break;
+		}
+			printf("姓名：\n");
+			scanf("%s",&s[i].name);
+			printf("性别：\n");
+			scanf("%s",&s[i].sex);
+			printf("专业：\n");
+			scanf("%s",&s[i].major);
+			printf("C语言：\n");
+			scanf("%f",&s[i].c);
+			printf("离散数学：\n");
+			scanf("%f",&s[i].math);
+			printf("电子电路：\n");
+			scanf("%f",&s[i].elect);
+			printf("网络：\n");
+			scanf("%f",&s[i].net);
+			printf("是否继续添加？（y/n）\n");
+			getchar();
+			scanf("%c",&sign);
+			i++;
+			n=n+1;
+			system("cls");	
+	}
+
+	for(i=0;i<n;i++)
+	{
+		fprintf(fp,"%s \t%s \t%s \t%s \t%.2f \t%.2f \t%.2f \t\t%.2f \r\n",s[i].id,s[i].name,s[i].sex,s[i].major,s[i].c,s[i].math,s[i].elect,s[i].net);
+	}	//win下换行用\r\n 
+	fclose(fp);	 
+	
+}
+//删除学生信息 
+void delet()
+{
+	FILE *fp;
+	int i=0,n=0,k=0;
+	struct STU s[100],p[100];
+	if((fp=fopen("c:\\student.txt","r"))==NULL)
+	{
+		printf("open error\n");
+		exit(0);	
+	}
+	while(fscanf(fp,"%s %s %s %s %f %f %f %f\n",p[k].id,p[k].name,p[k].sex,p[k].major,&p[k].c,&p[k].math,&p[k].elect,&p[k].net)!=EOF)
+	{
+	    k++;
+	    n=n+1;
+	}
+    fclose(fp);
+    FILE *fp1,*fpt;
+    char stuid[20];	
+	printf("请输入学号:");
+	scanf("%s",stuid);
+	int j=0;
+	while(strcmp(p[j].id,stuid)!=0&&j<k) j++;
+	if(j==k)
+	{
+		printf("该学生不存在。\n");
+		return;
+	}
+	else
+	{
+		fp1=fopen("c:\\student.txt","r");
+        fpt=fopen("c:\\temp.txt","w");//临时文件 ，只写 
+        if(fp1==NULL&&fpt==NULL)
+        {
+        	printf("open error\n");
+	    	exit(0);
+    	}
+    	int sign=0;
+    	while (sign<n)
+    	{
+    		if(strcmp(p[sign].id,stuid)!=0)
+            {
+            	fprintf(fpt,"%s \t%s \t%s \t%s \t%.2f \t%.2f \t%.2f \t%.2f\n",p[sign].id,p[sign].name,p[sign].sex,p[sign].major,p[sign].c,p[sign].math,p[sign].elect,p[sign].net);
+	    	}
+	    	sign++;
+		}
+		fclose(fp1);
+		fclose(fpt);
+		remove("c:\\student.txt");
+		rename("c:\\temp.txt","c:\\student.txt");
+		printf("删除成功! \n");
+	}
+}
+//修改学生信息 
+void amend()
+{
+	FILE *fp;
+	int i=0,n=0,k=0;
+	struct STU s[100],p[100];
+	if((fp=fopen("c:\\student.txt","r"))==NULL)
+	{
+		printf("open error\n");
+		exit(0);	
+	}
+	while(fscanf(fp,"%s %s %s %s %f %f %f %f\n",p[k].id,p[k].name,p[k].sex,p[k].major,&p[k].c,&p[k].math,&p[k].elect,&p[k].net)!=EOF)
+	{
+	    k++;
+	    n=n+1;
+	}
+    fclose(fp);
+    
+    FILE *fp1,*fpt;
+    char stuid[20];	
+	printf("请输入要修改的学号:");
+	scanf("%s",stuid);
+	int j=0;
+	while(strcmp(p[j].id,stuid)!=0&&j<k) j++;
+	if(j==k)
+	{
+		printf("该学生不存在。\n");
+		return;
+	}
+	else
+	{
+		printf("修改\n"); 
+		printf("姓名：\n");
+		scanf("%s",&s[i].name);
+		printf("性别：\n");
+		scanf("%s",&s[i].sex);
+		printf("专业：\n");
+		scanf("%s",&s[i].major);
+		printf("C语言：\n");
+		scanf("%f",&s[i].c);
+		printf("离散数学：\n");
+		scanf("%f",&s[i].math);
+		printf("电子电路：\n");
+		scanf("%f",&s[i].elect);
+		printf("网络：\n");
+		scanf("%f",&s[i].net);	
+	}
+	fp1=fopen("c:\\student.txt","r");
+    fpt=fopen("c:\\temp.txt","w");//临时文件 ，只写 
+        if(fp1==NULL&&fpt==NULL)
+        {
+        	printf("open error\n");
+	    	exit(0);
+    	}
+    	int sign=0;
+    	while (sign<n)
+    	{
+    		if(strcmp(p[sign].id,stuid)!=0)
+            {
+            	fprintf(fpt,"%s \t%s \t%s \t%s \t%.2f \t%.2f \t%.2f \t%.2f\n",p[sign].id,p[sign].name,p[sign].sex,p[sign].major,p[sign].c,p[sign].math,p[sign].elect,p[sign].net);
+	    	}
+	    	sign++;
+		}
+		fprintf(fpt,"%s \t%s \t%s \t%s \t%.2f \t%.2f \t%.2f \t%.2f\n",stuid,s[i].name,s[i].sex,s[i].major,s[i].c,s[i].math,s[i].elect,s[i].net);
+		fclose(fp1);
+		fclose(fpt);
+		remove("c:\\student.txt");
+		rename("c:\\temp.txt","c:\\student.txt"); 	
+}
+//查询学生 
+void find()
+{
+	system("cls");
+	struct STU s[200];
+	FILE *fp;
+	int i=0,n=0,m;
+	printf("\t\n请选择查询方式:\n");  
+    printf("\t┌──────┐\n");  
+    printf("\t│1--模糊查询 │\n");  
+    printf("\t│2------姓名 │\n");  
+    printf("\t│3------学号 │\n");  
+    printf("\t│4------返回 │\n");  
+    printf("\t└──────┘\n");  
+    printf("请输入你要查询的方式\n"); 
+    scanf("%d",&m);
+    while(m!=1&&m!=2&&m!=3&&m!=4)
+    {
+    	printf("输入错误，请重新查询\n");
+    	scanf("%d",&m);
+	}
+	if((fp=fopen("c:\\student.txt","r"))==NULL)
+	{
+		printf("open error\n");
+		exit(0);
+	}
+	while(fscanf(fp,"%s %s %s %s %f %f %f %f\n",s[i].id,s[i].name,s[i].sex,s[i].major,&s[i].c,&s[i].math,&s[i].elect,&s[i].net)!=EOF)
+	{
+		i++;
+		n=n+1;
+	}//循环 文件中多少学生 
+	//根据姓进行模糊查询 
+	if(m==1)
+	{
+		char fname[3];//汉子2个字节，\0 1个字节 
+		int i=0;
+		system("cls");
+		printf("请输入要查询的姓：");
+		scanf("%s",fname);
+		for(i=0;i<n;i++) 
+		{
+			if(s[i].name[0]==fname[0]&&s[i].name[1]==fname[1])// 比较前两个字符是否相同
+			{
+				printf("学号 \t姓名 \t性别 \t专业 \tC语言 \t数学 \t电子电路 \t网络 \n");
+				printf("%s \t%s \t%s \t%s \t%.2f \t%.2f \t%.2f \t\t%.2f \n",s[i].id,s[i].name,s[i].sex,s[i].major,s[i].c,s[i].math,s[i].elect,s[i].net);
+			 } 					
+	    } 	
+	}
+	//按姓名查询 
+	if(m==2)
+	{
+		char fname[20];
+		int i=0;
+		printf("请输入姓名:");
+		scanf("%s",fname); 
+		while(strcmp(s[i].name,fname)!=0&&i<n) i++;// 比较是否相同
+		if(i==n)
+		{
+			printf("该学生不存在。\n");	
+		} else{			
+		printf("学号 \t姓名 \t性别 \t专业 \tC语言 \t数学 \t电子电路 \t网络 \n");
+		printf("%s \t%s \t%s \t%s \t%.2f \t%.2f \t%.2f \t\t%.2f \n",s[i].id,s[i].name,s[i].sex,s[i].major,s[i].c,s[i].math,s[i].elect,s[i].net);					
+	}}
+	if(m==3)
+	{
+		char sid[20];
+		int i=0;
+		printf("请输入学号：");
+		scanf("%s",sid);
+		while(strcmp(s[i].id,sid)!=0&&i<n) i++;// 比较是否相同
+		if(i==n)
+		{
+			printf("该学生不存在。\n");	
+			return ;
+		} 
+		printf("学号 \t姓名 \t性别 \t专业 \tC语言 \t数学 \t电子电路 \t网络 \n");
+		printf("%s \t%s \t%s \t%s \t%.2f \t%.2f \t%.2f \t\t%.2f\n",s[i].id,s[i].name,s[i].sex,s[i].major,s[i].c,s[i].math,s[i].elect,s[i].net);					
+	}
+	fclose(fp); 
+}
+//排序 
+void sort()
+{
+	struct STU s[200],temp;
+	FILE *fp; 
+    float sum[100];  
+    int i=0,n=0;  
+    int j,t,m;  
+	system("cls");  
+    printf("\t\n选择排序方式:\n");  
+    printf("\t┌──────┐\n");  
+    printf("\t│1---C语言   │\n");  
+    printf("\t│2----数学   │\n");  
+    printf("\t│3--电子电路 │\n");  
+    printf("\t│4----网络   │\n"); 
+    printf("\t│5----总分   │\n");  
+    printf("\t│6------返回 │\n");  
+    printf("\t└──────┘\n");  
+    printf("请输入你要排序的方式\n");  
+    scanf("%d",&m);  
+    system("cls");  
+    while(m!=1&&m!=2&&m!=3&&m!=4&&m!=5&&m!=6&&m!=7)
+    {
+    	printf("输入错误，请重新查询\n");
+    	scanf("%d",&m);
+	}
+	if((fp=fopen("c:\\student.txt","r"))==NULL)
+	{
+		printf("open error\n");
+		exit(0);
+	}
+	while(fscanf(fp,"%s %s %s %s %f %f %f %f\n",s[i].id,s[i].name,s[i].sex,s[i].major,&s[i].c,&s[i].math,&s[i].elect,&s[i].net)!=EOF)
+	{
+		i++;
+		n=n+1;
+	}
+	if(m==1)
+	{//选择 
+	    int index; 
+		for(i=0;i<n-1;i++)
+		{
+			index = i; 
+			for(j=i+1;j<n;j++)
+			{
+				if(s[index].c<s[j].c)
+				{
+					index = j;
+				}
+			}
+			if(index!=i)
+			{		
+					temp=s[i];
+					s[i]=s[index];
+					s[index]=temp;
+			}
+		}
+		printf("学号 \t姓名 \t性别 \t专业 \tC语言 \t数学 \t电子电路 \t网络 \n\n");
+		for(i=0;i<n;i++)
+		{
+			printf("%s \t%s \t%s \t%s \t%.2f \t%.2f \t%.2f \t\t%.2f \n",s[i].id,s[i].name,s[i].sex,s[i].major,s[i].c,s[i].math,s[i].elect,s[i].net);					
+		}
+		fclose(fp);
+	}
+	if(m==2)
+		{//选择 
+	    int index; 
+		for(i=0;i<n-1;i++)
+		{
+			index = i; 
+			for(j=i+1;j<n;j++)
+			{
+				if(s[index].math<s[j].math)
+				{
+					index = j;
+				}
+			}
+			if(index!=i)
+			{		
+					temp=s[i];
+					s[i]=s[index];
+					s[index]=temp;
+			}
+		}
+		printf("学号 \t姓名 \t性别 \t专业 \tC语言 \t数学 \t电子电路 \t网络 \n\n");
+		for(i=0;i<n;i++)
+		{
+			printf("%s \t%s \t%s \t%s \t%.2f \t%.2f \t%.2f \t\t%.2f \n",s[i].id,s[i].name,s[i].sex,s[i].major,s[i].c,s[i].math,s[i].elect,s[i].net);					
+		}
+		fclose(fp);
+	}
+	if(m==3)
+		{//选择 
+	    int index; 
+		for(i=0;i<n-1;i++)
+		{
+			index = i; 
+			for(j=i+1;j<n;j++)
+			{
+				if(s[index].elect<s[j].elect)
+				{
+					index = j;
+				}
+			}
+			if(index!=i)
+			{		
+					temp=s[i];
+					s[i]=s[index];
+					s[index]=temp;
+			}
+		}
+		printf("学号 \t姓名 \t性别 \t专业 \tC语言 \t数学 \t电子电路 \t网络 \n\n");
+		for(i=0;i<n;i++)
+		{
+			printf("%s \t%s \t%s \t%s \t%.2f \t%.2f \t%.2f \t\t%.2f \n",s[i].id,s[i].name,s[i].sex,s[i].major,s[i].c,s[i].math,s[i].elect,s[i].net);					
+		}
+		fclose(fp);
+	}
+	if(m==4)
+	{//选择 
+	    int index; 
+		for(i=0;i<n-1;i++)
+		{
+			index = i; 
+			for(j=i+1;j<n;j++)
+			{
+				if(s[index].net<s[j].net)
+				{
+					index = j;
+				}
+			}
+			if(index!=i)
+			{		
+					temp=s[i];
+					s[i]=s[index];
+					s[index]=temp;
+			}
+		}
+		printf("学号 \t姓名 \t性别 \t专业 \tC语言 \t数学 \t电子电路 \t网络 \n\n");
+		for(i=0;i<n;i++)
+		{
+			printf("%s \t%s \t%s \t%s \t%.2f \t%.2f \t%.2f \t\t%.2f \n",s[i].id,s[i].name,s[i].sex,s[i].major,s[i].c,s[i].math,s[i].elect,s[i].net);					
+		}
+		fclose(fp);
+	}
+	if(m==5)
+	{
+		for(i=0;i<n;i++)
+		{
+			sum[i]=s[i].c+s[i].math+s[i].elect+s[i].net;
+		}
+		//选择 
+	    int index; 
+		for(i=0;i<n-1;i++)
+		{
+			index = i; 
+			for(j=i+1;j<n;j++)
+			{
+				if(sum[index]<sum[j])
+				{
+					index = j;
+				}
+			}
+			if(index!=i)
+			{	
+			    t=sum[i];
+			    sum[i]=sum[index];
+			    sum[index]=t;
+			    
+				temp=s[i];
+				s[i]=s[index];
+				s[index]=temp;
+			}
+		}
+		printf("学号 \t姓名 \t性别 \t专业 \tC语言 \t数学 \t电子电路 \t网络 \n\n");
+		for(i=0;i<n;i++)
+		{
+			printf("%s \t%s \t%s \t%s \t%.2f \t%.2f \t%.2f \t\t%.2f \n",s[i].id,s[i].name,s[i].sex,s[i].major,s[i].c,s[i].math,s[i].elect,s[i].net);					
+		}
+		fclose(fp);
+	}	
+}
+//全部学生信息 
+void display()
+{
+	int i=0,n;
+	FILE *fp;
+	if((fp=fopen("c:\\student.txt","r"))==NULL)
+	{
+		printf("open error\n");
+		exit(0);	
+	}
+	printf("学号 \t姓名 \t性别 \t专业 \tC语言 \t数学 \t电子电路 \t网络 \n\n");
+	while(fscanf(fp,"%s %s %s %s %f %f %f %f\n",stu[i].id,stu[i].name,stu[i].sex,stu[i].major,&stu[i].c,&stu[i].math,&stu[i].elect,&stu[i].net)!=EOF)
+	{
+		printf("%s \t%s \t%s \t%s \t%.2f \t%.2f \t%.2f \t\t%.2f\n",stu[i].id,stu[i].name,stu[i].sex,stu[i].major,stu[i].c,stu[i].math,stu[i].elect,stu[i].net);
+	    printf("\n");
+		i++;
+	}
+
+	fclose(fp);
+}
+
+int main(void)
+{   int digit;//功能选择
+	welcome();
+	login();
+	while(Login==1)
+	{
+		printf("\n选择您需要的功能\n");
+		menu();
+		scanf("%d",&digit);
+		switch(digit)
+		{
+			case 1:
+				printf("增加学生信息\n");
+				add();
+				break;
+			case 2:
+				printf("删除学生信息\n");
+				delet();
+				break;
+			case 3:
+				printf("修改学生信息\n");
+				amend();
+				break;
+			case 4:
+				printf("查询学生的信息\n");
+				find();
+				break;
+			case 5:
+				printf("按照学生成绩排序\n");
+				sort();
+				break;
+			case 6:
+				printf("浏览全部学生信息\n");
+				display();
+				break;
+			case 0:
+				printf("谢谢使用，再见。\n");
+				Login=0;
+				break;
+			default:
+				printf("请输入正确的功能\n"); 
+				break;				
+		}		
+	 } 
+	return 0;
+}
+```
