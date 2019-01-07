@@ -299,11 +299,11 @@ void find()
 		system("cls");
 		printf("请输入要查询的姓：");
 		scanf("%s",fname);
+		printf("学号 \t姓名 \t性别 \t专业 \tC语言 \t数学 \t电子电路 \t网络 \n");
 		for(i=0;i<n;i++) 
 		{
 			if(s[i].name[0]==fname[0]&&s[i].name[1]==fname[1])// 比较前两个字符是否相同
 			{
-				printf("学号 \t姓名 \t性别 \t专业 \tC语言 \t数学 \t电子电路 \t网络 \n");
 				printf("%s \t%s \t%s \t%s \t%.2f \t%.2f \t%.2f \t\t%.2f \n",s[i].id,s[i].name,s[i].sex,s[i].major,s[i].c,s[i].math,s[i].elect,s[i].net);
 			 } 					
 	    } 	
