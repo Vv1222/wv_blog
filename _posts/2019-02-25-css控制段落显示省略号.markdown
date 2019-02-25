@@ -7,14 +7,26 @@ categories: web
 
 
 
+
+
+
+
 ```
     overflow: hidden;/*隐藏溢出*/
     -webkit-line-clamp: 2;/*控制显示行数*/
     text-overflow: ellipsis;/*css3 显示省略符号来代表被修剪的文本。*/
-    display: -webkit-box;/*css3 盒模型  浏览器私有属性firefox(-moz)、opera(-0)、chrome/safari（-webkit)*/
+    display: -webkit-box;
+    
+    /*css3 盒模型  浏览器私有属性firefox(-moz)、opera(-0)、chrome/safari（-webkit)*/
+    
+    
     -webkit-box-orient: vertical;/*盒模型 子元素垂直从上到下排序*/
 ```
+
+
 > 微信小程序应用，webpck不能直接编译-webkit-box-orient: vertical;所以要加上下面两条注释。
+
+
 ```
 /*! autoprefixer: off */
 -webkit-box-orient: vertical;
