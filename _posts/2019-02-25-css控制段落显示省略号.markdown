@@ -6,7 +6,7 @@ categories: web
 ---
 
 
-
+主要代码
 
 
 
@@ -17,9 +17,7 @@ categories: web
     text-overflow: ellipsis;/*css3 显示省略符号来代表被修剪的文本。*/
     display: -webkit-box;
     
-    /*css3 盒模型  浏览器私有属性firefox(-moz)、opera(-0)、chrome/safari（-webkit)*/
-    
-    
+    /*css3 盒模型  浏览器私有属性firefox(-moz)、opera(-0)、chrome/safari（-webkit)*/    
     -webkit-box-orient: vertical;/*盒模型 子元素垂直从上到下排序*/
 ```
 
