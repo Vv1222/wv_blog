@@ -1,0 +1,48 @@
+---
+layout: post
+title:  "github 静态博客绑定域名与解绑域名"
+date:   2020-04-01 19:30:00 +0800
+categories: github page
+---
+
+
+绑定：
+首先要有自己的域名
+域名商国内阿里云/腾讯云等等看自己喜欢
+国外推荐godaddy、namecheap、namesilo、name等等
+在你的域名管理后台点击域名-解析-添加两条记录
+```
+CNAME www 你的github访问地址 （比如我的事vv1222.github.io）
+A     @   github网站的ip地址 （在终端ping一下）
+```
+然后进入博客所在的git仓库，点击Settings
+下拉找到GitHub Pages-Custom domain 填写你的域名，save。
+看到显示 ✅Your site is ready to be published at http://你的域名.com/.
+等十几分钟差不多就可以用域名访问啦。
+
+
+解绑：
+进入博客所在的git仓库，点击Settings
+下拉找到GitHub Pages-Custom domain 将之前绑定的域名删除，空白save。
+看到显示 ✅Your site is published at https://xxxx.github.io/
+就可以用默认地址访问咯
+
+```
+    overflow: hidden;/*隐藏溢出*/
+    -webkit-line-clamp: 2;/*控制显示行数*/
+    text-overflow: ellipsis;/*css3 显示省略符号来代表被修剪的文本。*/
+    display: -webkit-box;
+    
+    /*css3 盒模型  浏览器私有属性firefox(-moz)、opera(-0)、chrome/safari（-webkit)*/    
+    -webkit-box-orient: vertical;/*盒模型 子元素垂直从上到下排序*/
+```
+
+
+> 微信小程序应用，webpck不能直接编译-webkit-box-orient: vertical;所以要加上下面两条注释。
+
+
+```
+/*! autoprefixer: off */
+-webkit-box-orient: vertical;
+/* autoprefixer: on */
+```
