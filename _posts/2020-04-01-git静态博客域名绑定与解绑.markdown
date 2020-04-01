@@ -7,7 +7,7 @@ categories: github page
 
 域名到期了所以解绑了原域名，记录下绑定过程省的再折腾域名的时候忘记。
 
-###绑定：
+### 绑定：
 
 首先要有自己的域名
 
@@ -31,7 +31,7 @@ A     @   github网站的ip地址 （在终端ping一下）
 等十几分钟差不多就可以用域名访问啦。
 
 
-###解绑：
+### 解绑：
 
 进入博客所在的git仓库，点击Settings
 
@@ -40,3 +40,7 @@ A     @   github网站的ip地址 （在终端ping一下）
 看到显示 ✅Your site is published at https://xxxx.github.io/
 
 就可以用默认地址访问咯
+
+### 提示！
+如果有用gitment评论的解绑域名后记得去Settings-Developer settings-OAuth Apps-Register a new OAuth application
+把博客地址修改成现在的，不然初始化评论时还是跳原来的地址哦！
